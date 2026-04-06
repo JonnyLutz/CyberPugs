@@ -5,6 +5,7 @@ import { ceremonyCoreImage } from '../data/cyberpugs'
 type Props = {
   pug: CyberPug
   onClose: () => void
+  onEnterChat: () => void
 }
 
 const BOOT_LINES = [
@@ -15,7 +16,7 @@ const BOOT_LINES = [
   '> uplink: STABLE',
 ]
 
-export function LinkCeremony({ pug, onClose }: Props) {
+export function LinkCeremony({ pug, onClose, onEnterChat }: Props) {
   const [phase, setPhase] = useState(0)
   const [linesShown, setLinesShown] = useState(0)
 
@@ -36,9 +37,22 @@ export function LinkCeremony({ pug, onClose }: Props) {
     }
   }, [])
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+
   return (
     <div className="ceremony" role="dialog" aria-modal aria-labelledby="ceremony-title">
-      <div className="ceremony__backdrop" />
+      <button
+        type="button"
+        className="ceremony__backdrop"
+        aria-label="Dismiss"
+        onClick={onClose}
+      />
       <div className="ceremony__grid" aria-hidden />
       <div className="ceremony__content">
         <p className="ceremony__label" id="ceremony-title">
@@ -72,12 +86,12 @@ export function LinkCeremony({ pug, onClose }: Props) {
           buffers. Your CyberPug is now bound to this session.
         </p>
 
-        <div className="ceremony__actions">
-          <button type="button" className="ceremony__btn ceremony__btn--ghost" onClick={onClose}>
-            Choose another unit
+        <div className="ceremony__actions ceremony__actions--single">
+          <button type="button" className="ceremony__btn" onClick={onEnterChat}>
+            Open comms channel
           </button>
-          <button type="button" className="ceremony__btn" onClick={onClose}>
-            Enter the kennel
+          <button type="button" className="ceremony__btn-text" onClick={onClose}>
+            Cancel · choose another unit
           </button>
         </div>
       </div>

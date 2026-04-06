@@ -1,34 +1,50 @@
 import type { CyberPug } from '../types'
 
+/** First three units render in the catalog’s first row on wide layouts. */
 export const cyberpugs: CyberPug[] = [
   {
-    id: 'circuit-paws',
-    name: 'Circuit Paws',
-    callsign: 'NEON SHADOW',
-    designation: 'Cyber-Sentinel · Tier L',
+    id: 'neon-drifter',
+    name: 'Neon Drifter',
+    callsign: 'STREET DATA',
+    designation: 'Data courier · Off-road mod',
     image:
-      '/media/4466aa53-f3fd-49a1-8b34-9b77922f09f8-34cc7ef0-a9e2-4782-a80c-16884d1e4664.png',
+      '/media/307f258b-0d2d-4e20-99cc-29aa73710c03-7851080c-2c61-4049-b232-8e03c1e4f62c.png',
     attributes: [
-      { label: 'Optic sensors', value: 'Lv.10 night-chase mode' },
-      { label: 'Neural uplink', value: 'Forehead beacon v2.0' },
-      { label: 'Treat radar', value: '5-mile snack horizon' },
-      { label: 'Snore freq.', value: 'Sub-woofer certified' },
-      { label: 'Cuteness', value: '98% (±2% intimidation glow)' },
+      { label: 'Vehicle', value: 'Stealth interceptor (lifted)' },
+      { label: 'Visor', value: 'Cyber-scan V2 cyan' },
+      { label: 'Collar', value: 'Triple-band LED power' },
+      { label: 'Special', value: 'High-speed zoomies' },
+      { label: 'Vibe', value: '100% cool · 10% grump' },
     ],
   },
   {
-    id: 'pug-unit-01',
-    name: 'Pug-Unit 01',
-    callsign: 'THE NEON SENTINEL',
-    designation: 'Industrial Scout · Fawn chassis',
+    id: 'turbo-snort',
+    name: 'Turbo Snort',
+    callsign: 'MOHAWK NODE',
+    designation: 'Tactical Scout · Cyan visor',
     image:
-      '/media/cde197a0-7830-46e5-b225-3ee311f483d6-3814eed0-e7ae-4545-a999-135e91c66c52.png',
+      '/media/71753ef0-8add-4f6f-8ef5-221bde3dc18f-bd52d95d-3f6b-4aa7-9d9d-596b874c0066.png',
     attributes: [
-      { label: 'Visual sensors', value: 'Dual-core neon blue (OC)' },
-      { label: 'Ear modules', value: 'Signal-intercept triangles v2' },
-      { label: 'Fur grid', value: 'Thermal-regulating light-weave' },
-      { label: 'Special', value: 'Night-vision snorting' },
-      { label: 'Power', value: '9000 gigapugs nominal' },
+      { label: 'Headware', value: 'Mk.IV neural mohawk' },
+      { label: 'Optics', value: 'Cyan-light HUD visor' },
+      { label: 'Plating', value: 'Titanium chest weave' },
+      { label: 'Special', value: 'Turbo-snort · overclock cooling' },
+      { label: 'Tech level', value: '85/100 (100/10 cute)' },
+    ],
+  },
+  {
+    id: 'circuit-sentinel',
+    name: 'Circuit Sentinel',
+    callsign: 'SNORT-SCAN',
+    designation: 'Tech-Support · Visor grid',
+    image:
+      '/media/a5b1138b-cbe5-4066-b75e-4a912354a758-0651f7bc-ee9f-45e8-9f32-3049b3a0ebe8.png',
+    attributes: [
+      { label: 'Visor', value: 'Tactical neon bar (v1.0)' },
+      { label: 'Skin weave', value: 'Sub-dermal cyan traces' },
+      { label: 'Reactor', value: 'Kibble-core fusion' },
+      { label: 'Special', value: 'High-frequency snort-scan' },
+      { label: 'Class', value: 'Legendary support pup' },
     ],
   },
   {
@@ -44,21 +60,6 @@ export const cyberpugs: CyberPug[] = [
       { label: 'Skill', value: 'Brute-force treat decryption' },
       { label: 'Energy', value: '15% — nap recharge advised' },
       { label: 'Threat level', value: 'High if snacks present' },
-    ],
-  },
-  {
-    id: 'chrome-strider',
-    name: 'Chrome Strider',
-    callsign: 'DATA-SIGHT',
-    designation: 'Tech-Sentinel · City grid',
-    image:
-      '/media/ff2d708c-264f-4717-bca0-b07564b69786-08c6b3d5-82bf-4164-88ec-dc43e40ec4ae.png',
-    attributes: [
-      { label: 'HUD', value: 'Cyan ocular data-stream' },
-      { label: 'Armor', value: 'Chrome cyber-harness' },
-      { label: 'Energy core', value: 'Neon pulse stable' },
-      { label: 'Vibe', value: 'Stoic cyber-chonk' },
-      { label: 'Special', value: 'Quantum side-eye' },
     ],
   },
   {
@@ -92,21 +93,6 @@ export const cyberpugs: CyberPug[] = [
     ],
   },
   {
-    id: 'turbo-snort',
-    name: 'Turbo Snort',
-    callsign: 'MOHAWK NODE',
-    designation: 'Tactical Scout · Cyan visor',
-    image:
-      '/media/71753ef0-8add-4f6f-8ef5-221bde3dc18f-bd52d95d-3f6b-4aa7-9d9d-596b874c0066.png',
-    attributes: [
-      { label: 'Headware', value: 'Mk.IV neural mohawk' },
-      { label: 'Optics', value: 'Cyan-light HUD visor' },
-      { label: 'Plating', value: 'Titanium chest weave' },
-      { label: 'Special', value: 'Turbo-snort · overclock cooling' },
-      { label: 'Tech level', value: '85/100 (100/10 cute)' },
-    ],
-  },
-  {
     id: 'protocol-pug',
     name: 'Protocol Pug',
     callsign: 'NEON SNIFFER',
@@ -122,21 +108,6 @@ export const cyberpugs: CyberPug[] = [
     ],
   },
   {
-    id: 'circuit-sentinel',
-    name: 'Circuit Sentinel',
-    callsign: 'SNORT-SCAN',
-    designation: 'Tech-Support · Visor grid',
-    image:
-      '/media/a5b1138b-cbe5-4066-b75e-4a912354a758-0651f7bc-ee9f-45e8-9f32-3049b3a0ebe8.png',
-    attributes: [
-      { label: 'Visor', value: 'Tactical neon bar (v1.0)' },
-      { label: 'Skin weave', value: 'Sub-dermal cyan traces' },
-      { label: 'Reactor', value: 'Kibble-core fusion' },
-      { label: 'Special', value: 'High-frequency snort-scan' },
-      { label: 'Class', value: 'Legendary support pup' },
-    ],
-  },
-  {
     id: 'neon-eye-puggernaut',
     name: 'Neon-Eye Puggernaut',
     callsign: 'LED WRINKLE',
@@ -149,21 +120,6 @@ export const cyberpugs: CyberPug[] = [
       { label: 'Wrinkle density', value: 'Maximum legal' },
       { label: 'Stealth', value: 'Low (glow + snoring)' },
       { label: 'Snout', value: 'Classic squish certified' },
-    ],
-  },
-  {
-    id: 'neon-drifter',
-    name: 'Neon Drifter',
-    callsign: 'STREET DATA',
-    designation: 'Data courier · Off-road mod',
-    image:
-      '/media/307f258b-0d2d-4e20-99cc-29aa73710c03-7851080c-2c61-4049-b232-8e03c1e4f62c.png',
-    attributes: [
-      { label: 'Vehicle', value: 'Stealth interceptor (lifted)' },
-      { label: 'Visor', value: 'Cyber-scan V2 cyan' },
-      { label: 'Collar', value: 'Triple-band LED power' },
-      { label: 'Special', value: 'High-speed zoomies' },
-      { label: 'Vibe', value: '100% cool · 10% grump' },
     ],
   },
   {

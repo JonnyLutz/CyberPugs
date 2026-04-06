@@ -38,7 +38,7 @@ export function CyberPugCard({ pug, onSelect }: Props) {
           className="cyber-card__cta"
           onClick={() => onSelect(pug)}
         >
-          Link this unit
+          Sync this snoot
         </button>
       </div>
     </article>
