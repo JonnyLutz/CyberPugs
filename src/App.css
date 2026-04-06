@@ -403,12 +403,19 @@
 }
 
 .ceremony__core-wrap {
-  width: 100%;
-  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: min(220px, 55vw);
 }
 
 .ceremony__core {
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: min(38vh, 280px);
+  height: auto;
   border-radius: 10px;
   border: 1px solid rgba(46, 232, 255, 0.25);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
@@ -420,6 +427,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--amber);
+  text-align: center;
 }
 
 .ceremony__flavor {
@@ -500,10 +508,16 @@
   font-size: 0.75rem;
   color: rgba(200, 205, 216, 0.45);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.foot p {
+.foot__tagline {
   margin: 0;
+  max-width: 36rem;
+  line-height: 1.45;
+  text-align: center;
 }
 
 /* —— Chat page (comms bay) —— */

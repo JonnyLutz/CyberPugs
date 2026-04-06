@@ -57,7 +57,9 @@ export default function HomePage() {
       </main>
 
       <footer className="foot">
-        <p>CyberPugs · Speculative snuggle tech. No pugs were debugged against their will.</p>
+        <p className="foot__tagline">
+          CyberPugs · Speculative snuggle tech. No pugs were debugged against their will.
+        </p>
       </footer>
     </div>
   )

@@ -142,5 +142,4 @@ export const cyberpugs: CyberPug[] = [
 export const heroBackdrop =
   '/media/1d576ed7-c37f-46b4-8ef7-34a1569e3c4c-b8043895-84bb-417c-b430-e28e17e67a59.png'
 
-export const ceremonyCoreImage =
-  '/media/7bbef850-6ad8-44da-9c45-0f62df6c64ac-f6df15a9-2743-4b61-96e0-7910545a0885.png'
+export const ceremonyCoreImage = '/media/comm1..jpg'
