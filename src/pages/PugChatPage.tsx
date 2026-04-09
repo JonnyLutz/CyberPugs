@@ -13,14 +13,11 @@ import {
   PRIZE_IMAGES,
   PRIZES_TO_UNLOCK,
   prizeCountForOperatorSends,
-  TOY_MESSAGE_THRESHOLDS,
 } from '../data/prizes'
 import {
   splitAssistantForDisplay,
   type OperatorChoice,
 } from '../utils/operatorChoices'
-import { playToyAwardSound } from '../utils/toyAwardSound'
-
 type ChatLine = {
   id: string
   role: 'sys' | 'user' | 'pug'
@@ -55,7 +52,6 @@ export default function PugChatPage() {
   const [prizesViewed, setPrizesViewed] = useState<boolean[]>(() =>
     Array.from({ length: PRIZES_TO_UNLOCK }, () => false),
   )
-  const [toySoundMuted, setToySoundMuted] = useState(false)
   /** Successful operator sends (submitUserText) that got a model reply — unlocks toys at thresholds. */
   const [operatorSendCount, setOperatorSendCount] = useState(0)
   const threadEndRef = useRef<HTMLDivElement>(null)
@@ -262,7 +258,6 @@ export default function PugChatPage() {
           return prev
         })
         if (awardedSlot !== null) {
-          playToyAwardSound(toySoundMuted)
           setCelebrateSlot(awardedSlot)
           window.setTimeout(() => setCelebrateSlot(null), 900)
         }
@@ -289,13 +284,8 @@ export default function PugChatPage() {
       pug,
       sessionSystemPrompt,
       showBossModal,
-      toySoundMuted,
     ],
   )
-
-  function toggleToySoundMuted() {
-    setToySoundMuted((m) => !m)
-  }
 
   function sendDraft() {
     const t = draft.trim()
@@ -376,17 +366,6 @@ export default function PugChatPage() {
               <span className="chat-toy-box__title">{"TOY_BOX · who's a good boi?"}</span>
             </div>
             <div className="chat-toy-box__body">
-              <div className="chat-toy-box__toolbar chat-toy-box__toolbar--mute-only">
-                <button
-                  type="button"
-                  className={`chat-toy-box__mute${toySoundMuted ? ' chat-toy-box__mute--on' : ''}`}
-                  onClick={toggleToySoundMuted}
-                  aria-pressed={toySoundMuted}
-                  title={toySoundMuted ? 'Unmute toy ding' : 'Mute toy ding'}
-                >
-                  {toySoundMuted ? 'Sound off' : 'Sound on'}
-                </button>
-              </div>
               {allPrizesUnlocked && !allPrizeDossiersViewed ? (
                 <p className="chat-toy-box__boss-gate" role="status">
                   Open each toy dossier below (tap unlocked icons) to unlock Boss clearance.
@@ -544,9 +523,7 @@ export default function PugChatPage() {
             </form>
           ) : null}
           <p className="chat-panel__hint">
-            {error
-              ? `Uplink warning: ${error}`
-              : `Toys unlock at ${TOY_MESSAGE_THRESHOLDS.join(', ')} sends (each send = your message + reply). Tap A/B when shown.`}{' '}
+            {error ? `Uplink warning: ${error} ` : null}
             <button type="button" className="chat-panel__hint-btn" onClick={() => navigate('/')}>
               Return to catalog
             </button>
@@ -563,7 +540,7 @@ export default function PugChatPage() {
         >
           <div className="cyber-modal">
             <h2 id="boss-modal-title" className="cyber-modal__title">
-              You collected 3 sick prizes
+              You scored 3 awesome prizes!
             </h2>
             <p className="cyber-modal__body">
               Clearance spike detected. You have been selected to advance to the Boss Pug.
