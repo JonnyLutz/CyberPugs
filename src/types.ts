@@ -9,5 +9,6 @@ export type CyberPug = {
   callsign: string
   designation: string
   image: string
+  systemPrompt: string
   attributes: CyberPugAttribute[]
 }

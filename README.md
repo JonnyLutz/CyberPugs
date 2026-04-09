@@ -20,6 +20,13 @@ npm run dev
 
 Vite will print a local URL (often `http://localhost:5173`).
 
+### Bedrock chat (dev)
+
+The chat route (`/chat/:pugId`) now calls **Amazon Bedrock Converse** via a small local API server.
+
+- Copy `.env.example` to `.env` and set `AWS_REGION` + `BEDROCK_MODEL_ALLOWLIST` as needed.
+- Ensure your AWS credentials work locally (the same chain as `aws sts get-caller-identity`).
+
 ## Scripts
 
 | Command | What it does |
