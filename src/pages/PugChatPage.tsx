@@ -14,6 +14,7 @@ import {
   PRIZES_TO_UNLOCK,
   prizeCountForOperatorSends,
 } from '../data/prizes'
+import { bedrockApiUrl } from '../config/bedrockApi'
 import {
   splitAssistantForDisplay,
   type OperatorChoice,
@@ -122,7 +123,7 @@ export default function PugChatPage() {
 
   useEffect(() => {
     let cancelled = false
-    fetch('/api/config')
+    fetch(bedrockApiUrl('/api/config'))
       .then((r) => r.json())
       .then((d: { models: string[]; region: string }) => {
         if (cancelled) return
@@ -175,7 +176,7 @@ export default function PugChatPage() {
     }
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(bedrockApiUrl('/api/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -231,7 +232,7 @@ export default function PugChatPage() {
       setLoading(true)
 
       try {
-        const res = await fetch('/api/chat', {
+        const res = await fetch(bedrockApiUrl('/api/chat'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

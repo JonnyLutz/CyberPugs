@@ -5,6 +5,15 @@ import {
 import express from 'express'
 import { assertAllowedModelId, getAllowedModelIds } from './allowedModels.js'
 
+function formatApiError(e: unknown): string {
+  if (e && typeof e === 'object' && 'name' in e && 'message' in e) {
+    const o = e as { name: string; message: string }
+    if (o.message && o.name && o.name !== 'Error') return `${o.name}: ${o.message}`
+  }
+  if (e instanceof Error) return e.message
+  return String(e)
+}
+
 const region = process.env.AWS_REGION ?? 'us-east-1'
 const port = Number(process.env.PORT ?? 8787)
 const maxTokensCap = Number(process.env.MAX_OUTPUT_TOKENS_CAP ?? 8192)
@@ -32,6 +41,20 @@ function textFromConverseOutput(output: {
 }
 
 const app = express()
+const corsOrigin = process.env.CORS_ORIGIN?.trim()
+if (corsOrigin) {
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', corsOrigin)
+    res.setHeader('Vary', 'Origin')
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    if (req.method === 'OPTIONS') {
+      res.status(204).end()
+      return
+    }
+    next()
+  })
+}
 app.use(express.json({ limit: '2mb' }))
 
 app.get('/api/config', (_req, res) => {
@@ -70,12 +93,12 @@ app.post('/api/chat', async (req, res) => {
     const text = textFromConverseOutput(out.output ?? {})
     res.json({ message: text, stopReason: out.stopReason })
   } catch (e) {
-    const message = e instanceof Error ? e.message : String(e)
+    const message = formatApiError(e)
     console.error(e)
     res.status(500).json({ error: message })
   }
 })
 
-app.listen(port, () => {
-  console.log(`CyberPugs Bedrock API http://127.0.0.1:${port}  region=${region}`)
+app.listen(port, '0.0.0.0', () => {
+  console.log(`CyberPugs Bedrock API listening on :${port}  region=${region}`)
 })
